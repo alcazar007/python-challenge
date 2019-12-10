@@ -35,14 +35,7 @@
 '''
 
 # Imports
-import os, csv
+import os
+import csv
 
 # CSV Path
-data_file = os.path.join("Resources", "budget_data.csv")
-
-# Open csv with reader, header, and F statement
-
-with open (data_file, newline="", encoding="UTF-8") as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=",")
-    csv_header = next(csv_file)
-    print(f"Header:{csv_header}")
