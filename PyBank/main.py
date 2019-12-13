@@ -37,6 +37,7 @@
 # Imports
 import os, csv
 
+
 # CSV Path
 data_file = os.path.join("Resources", "budget_data.csv")
 
@@ -45,4 +46,12 @@ data_file = os.path.join("Resources", "budget_data.csv")
 with open (data_file, newline="", encoding="UTF-8") as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")
     csv_header = next(csv_file)
+
+
+# Print out Headers of Excel sheet
     print(f"Header:{csv_header}")
+
+# Count the number of rows
+with open (data_file, newline="", encoding="UTF-8") as csv_file:
+    month_row_count = sum(1 for row in csv_file)
+    print(month_row_count if month_row_count else 'empty')
