@@ -48,10 +48,13 @@ csv_file = os.path.join("Resources","election_data.csv")
 
 total_votes = 0
 candidates_list = []
-candidates_total = ["", 0]
+candidates_total = 0
 total_votes_per_candidate = 0
 winner_name = []
 word = []
+votes = [0,0,0,0]
+votes_percent_dictionary = {}
+votes_total_dictionary = {}
 
 
 with open(csv_file) as election_data:
@@ -63,16 +66,21 @@ with open(csv_file) as election_data:
 
         word = str(x[2])
 
-        
-    # values in x[2] are being stored in memory or another column 
+        # Iterate over the list using for loop
+    # values in x[2](could be any name) are being stored in memory or another column 
     # then checking if the values stored when camparing x[2] to word are not in candidates_list
     # then the values are added to candidates_list
-        if x[2] in word:
-            if x[2] not in candidates_list:
-                candidates_list.append(x[2])
+        if word not in candidates_list:
+            candidates_list.append(x[2])
+            votes_total_dictionary[x[2]] = 0
+        votes_total_dictionary[x[2]] = votes_total_dictionary[x[2]] + 1
 
+        for y in votes_total_dictionary:
+            votes_percent_dictionary[y] = (votes_total_dictionary[y] / total_votes) * 100
 
+print(total_votes)
+print(candidates_list)
+print(votes_total_dictionary)
+print(votes_percent_dictionary)
 
-    print(candidates_list)
-    print(total_votes)
-
+  
